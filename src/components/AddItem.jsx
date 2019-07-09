@@ -10,12 +10,15 @@ class AddItem extends React.Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    let item = {
-      product: this.props.products[this.state.product],
-      quantity: this.state.quantity
+    if (this.state.product && this.state.quantity) {
+      let item = {
+        product: this.props.products[this.state.product],
+        quantity: this.state.quantity
+      }
+      console.log(JSON.stringify(this.state.product));
+      this.props.formSubmit(item);
     }
-    console.log(JSON.stringify(this.state.product));
-    this.props.formSubmit(item);
+    
   }
 
   render () {
